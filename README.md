@@ -31,21 +31,26 @@ An enterprise-ready Single Page Application (SPA) built with **Angular 12+** and
 ## 📦 Project Structure
 
 ```text
-Mploycheck/
+nsqtech-challenge/
 ├── backend/
-│   ├── data/
-│   │   └── database.xml      # Local XML storage file for records
-│   ├── controllers/          # Request handling logic (e.g., user.controllers.ts)
-│   ├── server.ts             # Express application entry point
-│   ├── package.json          # Backend dependencies
-│   └── tsconfig.json
-├── frontend/
 │   ├── src/
-│   │   ├── app/              # Angular components, guards, and services
-│   │   └── index.html
-│   ├── package.json          # Frontend dependencies
+│   │   ├── data/
+│   │   │   └── database.xml       
+│   │   ├── controllers/
+│   │   │   └── user.controller.ts  
+│   │   └── server.ts              
+│   ├── package.json
 │   └── tsconfig.json
-└── README.md
+└── frontend/                     
+    └── src/app/
+        ├── core/
+        │   ├── guards/auth.guard.ts
+        │   └── services/user.service.ts
+        ├── features/
+        │   ├── login/             
+        │   └── dashboard/        
+        ├── app-routing.module.ts
+        └── app.component.ts
 ```
 
 ---
