@@ -1,0 +1,74 @@
+<div style="padding: 30px; font-family: Arial, sans-serif;">
+  <div style="display:flex; justify-content: space-between; align-items:center; border-bottom:2px solid #eee; padding-bottom:10px;">
+    <div>
+      <h2>Dashboard Console</h2>
+      <p>Active Profile: <strong>{{currentUser.name}}</strong> | Current Role: <span style="color: blue;">{{currentUser.role}}</span></p>
+    </div>
+    <button (click)="logout()" style="padding:8px 15px; background: #dc3545; color:white; border:none; border-radius:4px; cursor:pointer;">Logout</button>
+  </div>
+
+  @if (isLoading) {
+    <div style="margin: 40px 0; text-align: center; color: #0056b3; font-weight: bold;">
+      <div class="spinner" style="font-size:24px; margin-bottom: 10px;">⏳</div>
+      Processing network asynchronous delay parameter stream (2500ms execution buffer)...
+    </div>
+  }
+
+  @if (!isLoading) {
+    <div style="margin-top:20px;">
+      <h3>System Record Database Ledger (Sourced via Local XML)</h3>
+      <table border="1" style="width:100%; border-collapse: collapse; text-align: left;">
+        <thead>
+          <tr style="background:#f4f4f4;">
+            <th style="padding:10px;">User ID</th>
+            <th style="padding:10px;">Full Name</th>
+            <th style="padding:10px;">Assigned Role Scope</th>
+            <th style="padding:10px;">Active Access Privileges</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (record of records; track record.id) {
+            <tr style="border-bottom: 1px solid #ddd;">
+              <td style="padding:10px; font-weight:bold;">{{record.id}}</td>
+              <td style="padding:10px;">{{record.name}}</td>
+              <td style="padding:10px;">{{record.role}}</td>
+              <td style="padding:10px; color:#555;">{{record.accessLevel}}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="4" style="padding: 20px; text-align: center; color: #888;">No database ledger records found.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+
+  @if (!isLoading && currentUser.role === 'Admin') {
+    <div style="margin-top:40px; padding:20px; background:#fff9e6; border:1px solid #ffeeba; border-radius:6px;">
+      <h3>🛡️ Administrative Controls: Append Live Database Entry</h3>
+      <form (ngSubmit)="submitNewUser()" style="display:flex; gap:15px; align-items: flex-end; flex-wrap: wrap;">
+        <div>
+          <label style="display:block; font-size:12px;">ID:</label>
+          <input type="text" [(ngModel)]="newUser.id" name="newId" required style="padding:6px; width:80px;">
+        </div>
+        <div>
+          <label style="display:block; font-size:12px;">Full Name:</label>
+          <input type="text" [(ngModel)]="newUser.name" name="newName" required style="padding:6px;">
+        </div>
+        <div>
+          <label style="display:block; font-size:12px;">Role Assignment:</label>
+          <select [(ngModel)]="newUser.role" name="newRole" style="padding:6px;">
+            <option value="General User">General User</option>
+            <option value="Admin">Admin</option>
+          </select>
+        </div>
+        <div>
+          <label style="display:block; font-size:12px;">Access Permissions:</label>
+          <input type="text" [(ngModel)]="newUser.accessLevel" name="newAccess" required style="padding:6px;">
+        </div>
+        <button type="submit" style="padding:8px 15px; background:#1e7e34; color:white; border:none; border-radius:4px; cursor:pointer;">Write to XML Engine</button>
+      </form>
+    </div>
+  }
+</div>

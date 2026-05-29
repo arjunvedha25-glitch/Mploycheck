@@ -1,0 +1,24 @@
+<div style="max-width: 400px; margin: 80px auto; padding: 30px; border: 1px solid #ccc; font-family: Arial, sans-serif; border-radius: 8px;">
+  <h2>NSQTech System Portal Login</h2>
+@if (errorMsg) {
+  <div style="color: red; margin-bottom: 15px;">{{ errorMsg }}</div>
+}  
+  <form (ngSubmit)="onLogin()">
+    <div style="margin-bottom: 15px;">
+      <label>User ID:</label>
+      <input type="text" [(ngModel)]="credentials.userId" name="userId" required style="width:100%; padding:8px; margin-top:5px;">
+    </div>
+    <div style="margin-bottom: 15px;">
+      <label>Password:</label>
+      <input type="password" [(ngModel)]="credentials.password" name="password" required style="width:100%; padding:8px; margin-top:5px;">
+    </div>
+    <div style="margin-bottom: 20px;">
+      <label>System Role:</label>
+      <select [(ngModel)]="credentials.role" name="role" style="width:100%; padding:8px; margin-top:5px;">
+        <option value="General User">General User</option>
+        <option value="Admin">Admin</option>
+      </select>
+    </div>
+    <button type="submit" style="width:100%; padding:10px; background:#0056b3; color:white; border:none; border-radius:4px; cursor:pointer;">Authenticate</button>
+  </form>
+</div>

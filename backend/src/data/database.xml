@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<users>
+    <user>
+        <id>101</id>
+        <password>admin123</password>
+        <name>Arjun Kumar J</name>
+        <role>Admin</role>
+        <accessLevel>Full System Control</accessLevel>
+    </user>
+    <user>
+        <id>102</id>
+        <password>user123</password>
+        <name>jack</name>
+        <role>General User</role>
+        <accessLevel>Read Only Access</accessLevel>
+    </user>
+    <user>
+        <id/>
+        <password>default123</password>
+        <name/>
+        <role>General User</role>
+        <accessLevel>Read Only Access</accessLevel>
+    </user>
+    <user>
+        <id/>
+        <password>default123</password>
+        <name/>
+        <role>General User</role>
+        <accessLevel>Read Only Access</accessLevel>
+    </user>
+    <user>
+        <id/>
+        <password>default123</password>
+        <name/>
+        <role>General User</role>
+        <accessLevel>Read Only Access</accessLevel>
+    </user>
+    <user>
+        <id/>
+        <password>default123</password>
+        <name/>
+        <role>Admin</role>
+        <accessLevel>Read Only Access</accessLevel>
+    </user>
+    <user>
+        <id/>
+        <password>default123</password>
+        <name>dinesh</name>
+        <role>General User</role>
+        <accessLevel>Read Only Access</accessLevel>
+    </user>
+</users>
