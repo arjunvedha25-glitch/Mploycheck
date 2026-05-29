@@ -91,6 +91,17 @@ nsqtech-challenge/
    *The client interface will be viewable at `http://localhost:4200`.*
 
 ---
+LOGIN DETAILS 
+
+ADMIN: Arjun Kumar J 
+id:101
+password:admin123
+
+GENERAL: Jack
+id:102
+password:user123
+
+
 
  🧑‍💻 Author
 
