@@ -3,7 +3,7 @@ import path from 'path';
 import xml2js from 'xml2js';
 
 const xmlFilePath = path.resolve(process.cwd(), 'src/data/database.xml');
-// Helper to read and parse XML to JSON array
+// 
 const readXmlData = async (): Promise<any[]> => {
   const fileContent = fs.readFileSync(xmlFilePath, 'utf-8');
   const parser = new xml2js.Parser({ explicitArray: false });
@@ -12,10 +12,10 @@ const readXmlData = async (): Promise<any[]> => {
   return Array.isArray(users) ? users : [users];
 };
 
-// Helper to write JSON back to XML
+// 
 const writeXmlData = async (usersArray: any[]): Promise<void> => {
   const builder = new xml2js.Builder({ rootName: 'users', renderOpts: { pretty: true, indent: '    ', newline: '\n' } });
-  // Re-wrap rows match database format
+  // 
   const xmlObject = { user: usersArray };
   const xmlContent = builder.buildObject(xmlObject);
   fs.writeFileSync(xmlFilePath, xmlContent, 'utf-8');
@@ -44,10 +44,10 @@ export const getUsers = async (req: Request, res: Response) => {
     const delay = req.query.delay ? parseInt(req.query.delay as string, 10) : 0;
     const users = await readXmlData();
     
-    // Remove sensitive passwords before sending data to client
+    // 
     const sanitizedUsers = users.map(({ password, ...rest }) => rest);
 
-    // Enforce the async delay parameter showcase
+    // 
     setTimeout(() => {
       res.status(200).json(sanitizedUsers);
     }, delay);
@@ -67,7 +67,7 @@ export const createNewUser = async (req: Request, res: Response) => {
     const users = await readXmlData();
     users.push({
       id: newUser.id,
-      password: 'default123', // Default fallback password
+      password: 'default123', // 
       name: newUser.name,
       role: newUser.role,
       accessLevel: newUser.accessLevel

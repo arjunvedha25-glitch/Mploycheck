@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
   records: any[] = [];
   isLoading = false;
   
-  // New user form state object
+  // 
   newUser = { id: '', name: '', role: 'General User', accessLevel: 'Read Only Access' };
 
   constructor(private userService: UserService, private router: Router, private cdr: ChangeDetectorRef) {}
